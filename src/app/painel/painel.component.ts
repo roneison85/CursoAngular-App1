@@ -34,6 +34,7 @@ export class PainelComponent implements OnInit {
       this.rodada++;
       this.progresso = (this.rodada * 100) / this.frases.length;
       console.log(this.progresso);
+      console.log('Rodada: ' + this.rodada);
       this.rodadaFrase = this.frases[this.rodada]; 
     }else{
       alert('A frase esta errada');
