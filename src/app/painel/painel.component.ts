@@ -8,17 +8,16 @@ import { FRASES } from './frases-mock';
   styleUrls: ['./painel.component.css']
 })
 export class PainelComponent implements OnInit {
-
   public frases: Frase[] = FRASES;
   public instrucao: string = 'Traduza a frase:';
-  public resposta: string;
+  public resposta: string = '';
 
   public rodada: number = 0;
   public rodadaFrase: Frase;
   public progresso: number = 0;
 
   constructor() {
-    this.rodadaFrase = this.frases[this.rodada];
+    this.atualizaRodada();
   }
 
   ngOnInit() {
@@ -35,11 +34,16 @@ export class PainelComponent implements OnInit {
       this.progresso = (this.rodada * 100) / this.frases.length;
       console.log(this.progresso);
       console.log('Rodada: ' + this.rodada);
-      this.rodadaFrase = this.frases[this.rodada]; 
+      this.atualizaRodada();
     }else{
       alert('A frase esta errada');
     }
     
+  }
+
+  atualizaRodada() {
+    this.rodadaFrase = this.frases[this.rodada];
+    this.resposta = '';
   }
 
 }
